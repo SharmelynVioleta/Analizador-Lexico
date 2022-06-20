@@ -3,6 +3,7 @@ package Codigo;
 public enum Tokens {
     Palabra_reservada,
     Igual,
+    Es_Igual,
     Suma,
     Resta,
     Multiplicacion,
@@ -19,5 +20,19 @@ public enum Tokens {
     Comentario,
     Cadena,
     Dos_Puntos,
+	Mayor_que,
+	Menor_que,
+	Menor_igual_que,
+	Mayor_igual_que,
+	Operador,
+	Modulo,
+	No_es_igual,
+	Invierte,
+	Or_logico,
+	And_logico,
+	Corchete_lista_inicio,
+	Corchete_lista_final,
+	Comilla_simple_Cadena,
+	Contra_Slash,
     ERROR
 }

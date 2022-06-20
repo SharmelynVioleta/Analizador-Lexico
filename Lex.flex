@@ -1,6 +1,6 @@
-package Code;
+package Codigo;
 import java_cup.runtime.*;
-import static Code.Tokens.*;
+import static Codigo.Tokens.*;
 %%
 %class Lexer
 %type Tokens
@@ -14,7 +14,7 @@ espacio=[ ,\t,\r,\n]+
 abstract | else| import |	show |
 as 	|enum	|in	|static |
 assert	|export |	interface |	super|
-async |	extends|	is|	switch|
+async |	extends|	is|	  switch|
 await |	extension |	late |	sync |
 break	|external |	library |	this|
 case	|factory |	mixin |	throw|
@@ -26,12 +26,13 @@ covariant |	Function |	part |	void|
 default|	get| 	required |	while|
 deferred |	hide |	rethrow|	with|
 do|	if|	return|	yield |
-dynamic|	implements |	set | 
+dynamic|	implements |	set | as |
 while {lexeme=yytext(); return Palabra_reservada;}
 
 {espacio} {/*Ignore*/}
 "//" {return Comentario;}
 "=" {return Igual;}
+"==" {return Es_Igual;}
 "+" {return Suma;}
 "-" {return Resta;}
 "*" {return Multiplicacion;}
@@ -45,6 +46,22 @@ while {lexeme=yytext(); return Palabra_reservada;}
 ")" {return Parentesis;}
 "." {return Punto;}
 ":" {return Dos_Puntos;}
+">" {return Mayor_que;}
+"<" {return Menor_que;}
+">=" {return Mayor_igual_que;}
+"<=" {return Menor_igual_que;}
+"?" {return Operador;}
+"%" {return Modulo;}
+"!=" {return No_es_igual;}
+"!expr" {return Invierte;}
+"||" {return Or_logico;}
+"&&" {return And_logico;}
+"[" {return Corchete_lista_inicio;}
+"]" {return Corchete_lista_final;}
+"'" {return Comilla_simple_Cadena;}
+\"\" {return Contra_Slash;}
+
+
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}
  . {return ERROR;}
